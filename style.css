@@ -18,26 +18,66 @@ body {
     
 }
 
-.logo {
-    margin-left: 200px;
-    margin-right: 500px;
-    margin-top: 15px;
-    width: 200px;
-}
-
-nav ul {
-    list-style: none;
-}
-
-nav, nav ul {
+/* Container styling */
+.navbar {
     display: flex;
+    justify-content: space-between; /* Pushes logo to left and links to right */
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #f9f9f9; /* Light grey background from image */
+    font-family: 'Inter', sans-serif; /* A clean, modern font */
+
+    /* 1. Make background transparent */
+    background-color: transparent; 
+    background-color: rgba(255, 255, 255, 0.96); 
+
+    /* 2. Position it over your content */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10; /* Ensures it stays on top of other elements */
+
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;    /* Ensures it spans the full width */
+    z-index: 1000;  /* Keeps it on top of all other elements */
 }
 
-nav ul li {
-    text-decoration: none;
+/* Logo box styling */
+.logo {
+    background-color: #000; /* Black square */
+    color: #fff;            /* White text */
+    padding: 8px 12px;
     font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    margin-right: 20px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* Links container (if you wrap links in a div, otherwise target links directly) */
+.navlinks {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.75rem;     /* Small, elegant text */
+    font-weight: 600;
+    letter-spacing: 1.5px;  /* Increased spacing for that "editorial" look */
+    margin-left: 40px;      /* Spacing between links */
+    transition: opacity 0.3s ease;
+}
+
+.navlinks:hover {
+    opacity: 0.6;           /* Subtle hover effect */
+}
+
+#home {
+    height: 100vh;
+    display: flex;
+    align-items: center; /* Pantay sa gitna (vertical) */
+    justify-content: space-between; /* Hiwalay ang text sa kaliwa, profile sa kanan */
+    padding: 0 10%; /* Ang 10% space sa magkabilang gilid */
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif; /* Gumamit ng malinis na font */
 }
 
 .profile {
@@ -52,10 +92,29 @@ nav ul li {
     overflow: hidden;
 }
 
-.content {
-    margin-left: 10%;
-    margin-top: 0;
+.home-content {
+    max-width: 600px;
 }
+
+.hey {
+    transition: opacity 0.5s ease-in-out; /* Eto ang nagpapasmooth ng animation */
+    font-size: 10.5rem; /* O kung anong size ang gusto mo */
+    font-weight: bold;
+    display: inline-block; /* Para hindi gumagalaw yung ibang text pag nagpalit */
+}
+
+#greetings-text {
+    border-right: 3px solid #000; /* Ang "cursor" line */
+    padding-right: 5px;
+    animation: blink 0.7s infinite; /* Para kumutitap */
+    white-space: nowrap; /* Para hindi bumaba yung text habang tina-type */
+}
+
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #000; }
+}
+
 
 section {
     height: 100vh;
