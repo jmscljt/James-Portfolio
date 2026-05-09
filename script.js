@@ -1,4 +1,4 @@
-const greetings = ["Kamusta,", "Hello,", "Hola,", "Bonjour,", "Konnichiwa,", "Annyeong,"];
+const greetings = ["Kamusta,", "Hello,", "Hola,", "Bonjour,", "こんにちは,", "Annyeong,"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -8,11 +8,9 @@ function type() {
     const currentWord = greetings[wordIndex];
     
     if (isDeleting) {
-        // Binabawasan ang letra (Deleting)
         textElement.textContent = currentWord.substring(0, charIndex - 1);
         charIndex--;
     } else {
-        // Dinadagdagan ang letra (Typing)
         textElement.textContent = currentWord.substring(0, charIndex + 1);
         charIndex++;
     }
@@ -37,3 +35,6 @@ function type() {
 
 // Simulan ang animation
 document.addEventListener("DOMContentLoaded", type);
+
+
+

@@ -10,7 +10,7 @@ html {
 
 header {
     padding: 10px 0;
-    background-color: cyan;
+    background-color: #ffffff;
 }
 
 body {
@@ -18,7 +18,6 @@ body {
     
 }
 
-/* Container styling */
 .navbar {
     display: flex;
     justify-content: space-between; /* Pushes logo to left and links to right */
@@ -31,13 +30,6 @@ body {
     background-color: transparent; 
     background-color: rgba(255, 255, 255, 0.96); 
 
-    /* 2. Position it over your content */
-    position: absolute; 
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10; /* Ensures it stays on top of other elements */
-
     position: fixed; 
     top: 0;
     left: 0;
@@ -45,7 +37,6 @@ body {
     z-index: 1000;  /* Keeps it on top of all other elements */
 }
 
-/* Logo box styling */
 .logo {
     background-color: #000; /* Black square */
     color: #fff;            /* White text */
@@ -55,24 +46,42 @@ body {
     letter-spacing: 1px;
 }
 
-/* Links container (if you wrap links in a div, otherwise target links directly) */
 .navlinks {
     text-decoration: none;
     color: #333;
-    font-size: 0.75rem;     /* Small, elegant text */
+    font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 1.5px;  /* Increased spacing for that "editorial" look */
-    margin-left: 40px;      /* Spacing between links */
+    letter-spacing: 1.5px;
+    margin-left: 40px;
     transition: opacity 0.3s ease;
+    
+    /* ADD THIS LINE BELOW */
+    position: relative; 
+}
+
+.navlinks::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px; /* Keeping it thin for your "elegant" look */
+    bottom: -4px; /* Adjust this to move the line closer or further from text */
+    left: 0;
+    background-color: #333;
+    transition: width 0.3s ease;
 }
 
 .navlinks:hover {
-    opacity: 0.6;           /* Subtle hover effect */
+    opacity: 0.6;
+}
+
+.navlinks:hover::after {
+    width: 100%;
 }
 
 #home {
     height: 100vh;
     display: flex;
+    position: relative;
     align-items: center; /* Pantay sa gitna (vertical) */
     justify-content: space-between; /* Hiwalay ang text sa kaliwa, profile sa kanan */
     padding: 0 10%; /* Ang 10% space sa magkabilang gilid */
@@ -81,40 +90,73 @@ body {
 }
 
 .profile {
-    margin-left: 10%;
-    margin-top: 0;
-    background: url('images/profile2.jpg')no-repeat center center/cover;
-    width: 300px;
-    height: 300px;
+    left: 1000px;
+    top: 160px;
+    background: no-repeat center center/cover;
+    width: 435px;
+    height: 700px;
     object-fit: cover;
-    border-radius: 50%;
     display: block;
     overflow: hidden;
+    position: absolute;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column; /* This puts home-content UNDER greetings */
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: -120px;
+    margin-left: -100px;
+}
+
+.greetings {
+    max-width: 500px;
+    flex-shrink: 0;
 }
 
 .home-content {
-    max-width: 600px;
+    margin-top: 30px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.hey {
-    transition: opacity 0.5s ease-in-out; /* Eto ang nagpapasmooth ng animation */
-    font-size: 10.5rem; /* O kung anong size ang gusto mo */
+.greet {
+    transition: opacity 0.5s ease-in-out;
+    font-size: 11rem;
     font-weight: bold;
-    display: inline-block; /* Para hindi gumagalaw yung ibang text pag nagpalit */
+    display: inline-block;
+    margin: 0;
+    min-height: 1.2em; /* Sinisiguro nito na laging may space kahit walang letra */
+    line-height: 1.2;  /* Para fixed ang vertical space */
+    vertical-align: middle; /* Para pantay ang alignment */
 }
 
 #greetings-text {
-    border-right: 3px solid #000; /* Ang "cursor" line */
+    border-right: 3px solid #000;
     padding-right: 5px;
-    animation: blink 0.7s infinite; /* Para kumutitap */
-    white-space: nowrap; /* Para hindi bumaba yung text habang tina-type */
+    animation: blink 0.7s infinite;
+    white-space: nowrap;
+    text-align: left;
+    display: inline-block; /* Mahalaga para gumana ang min-height */
+}
+
+.name-ko {
+    font-size: 80px;
+}
+
+.intro {
+    margin-top: 30px;
+    margin-left: 7px;
+    font-size: 30px;
+    
 }
 
 @keyframes blink {
     0%, 100% { border-color: transparent; }
     50% { border-color: #000; }
 }
-
 
 section {
     height: 100vh;
@@ -123,4 +165,53 @@ section {
     align-items: center;
     font-size: 45px;
     font-weight: 600;
+}
+
+/* Responsive Adjustments for Tablets & Mobile (768px and below) */
+@media (max-width: 768px) {
+    
+    .navbar {
+        padding: 15px 20px; /* Reduce side padding */
+    }
+
+    .navlinks {
+        margin-left: 15px; /* Bring links closer together */
+        font-size: 0.65rem;
+    }
+
+    #home {
+        flex-direction: column; /* Stack content vertically */
+        padding: 0 5%;
+        text-align: center;
+    }
+
+    .text-wrapper {
+        margin-left: 0;   /* Reset your negative margins */
+        margin-top: 50px;
+        align-items: center;
+    }
+
+    .greet {
+        margin-top: 15px;
+        font-size: 4rem;  /* Shrink from 11rem to fit screen */
+    }
+
+    .name-ko {
+        font-size: 40px;  /* Shrink name */
+    }
+
+    .intro {
+        font-size: 20px;
+    }
+
+    .profile {
+        /* Reset absolute positioning so it flows naturally */
+        position: relative; 
+        left: 0;
+        top: 20px;
+        width: 80%;       /* Make it fit the width of the phone */
+        height: auto;     /* Let it scale */
+        aspect-ratio: 435/700; /* Keep the original proportions */
+        margin: 0 auto;
+    }
 }
