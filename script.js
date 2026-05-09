@@ -49,31 +49,28 @@ const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 
 let particles = [];
-const particleCount = 80; // Adjust for density
-const connectionDistance = 150; // Distance where lines appear
+let particleCount;       // Declare these globally
+let connectionDistance;
 
-// Resize canvas to window size
 function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    init(); // Re-initialize particles when the window size changes
 }
 window.addEventListener('resize', resize);
-resize();
 
 class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5; // Horizontal speed
-        this.vy = (Math.random() - 0.5) * 0.5; // Vertical speed
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
         this.radius = 2;
     }
 
     update() {
         this.x += this.vx;
         this.y += this.vy;
-
-        // Bounce off edges
         if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
         if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
     }
@@ -87,6 +84,10 @@ class Particle {
 }
 
 function init() {
+    // Determine density every time init is called (like on resize)
+    particleCount = window.innerWidth < 768 ? 30 : 80;
+    connectionDistance = window.innerWidth < 768 ? 100 : 150;
+
     particles = [];
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
@@ -95,17 +96,13 @@ function init() {
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     for (let i = 0; i < particles.length; i++) {
         particles[i].update();
         particles[i].draw();
-
-        // Draw lines between nearby particles
         for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
             const dy = particles[i].y - particles[j].y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-
             if (distance < connectionDistance) {
                 ctx.beginPath();
                 ctx.strokeStyle = `rgba(0, 0, 0, ${1 - distance / connectionDistance})`;
@@ -119,8 +116,10 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-init();
+// Call resize once to set initial dimensions and run init()
+resize(); 
 animate();
+
 
 
 // ----------------------------------------------------------------------------------------------------------------------
