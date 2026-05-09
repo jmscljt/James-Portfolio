@@ -23,7 +23,6 @@ body {
     justify-content: space-between; /* Pushes logo to left and links to right */
     align-items: center;
     padding: 20px 50px;
-    background-color: #f9f9f9; /* Light grey background from image */
     font-family: 'Inter', sans-serif; /* A clean, modern font */
 
     /* 1. Make background transparent */
@@ -44,6 +43,7 @@ body {
     font-weight: bold;
     font-size: 1.2rem;
     letter-spacing: 1px;
+    pointer-events: none;
 }
 
 .navlinks {
@@ -85,7 +85,6 @@ body {
     align-items: center; /* Pantay sa gitna (vertical) */
     justify-content: space-between; /* Hiwalay ang text sa kaliwa, profile sa kanan */
     padding: 0 10%; /* Ang 10% space sa magkabilang gilid */
-    background-color: #ffffff;
     font-family: 'Inter', sans-serif; /* Gumamit ng malinis na font */
 }
 
@@ -208,10 +207,20 @@ section {
         /* Reset absolute positioning so it flows naturally */
         position: relative; 
         left: 0;
-        top: 20px;
-        width: 80%;       /* Make it fit the width of the phone */
+        top: 0;
+        width: 100%;       /* Make it fit the width of the phone */
         height: auto;     /* Let it scale */
         aspect-ratio: 435/700; /* Keep the original proportions */
         margin: 0 auto;
     }
+}
+
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Keeps it behind your text/images */
+    background-color: #ffffff; /* Matches your portfolio theme */
 }
