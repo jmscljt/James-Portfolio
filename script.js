@@ -49,13 +49,31 @@ const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
 
 let particles = [];
-let particleCount;       // Declare these globally
+let particleCount;
 let connectionDistance;
+
+// 1. Mouse object to track position
+const mouse = {
+    x: null,
+    y: null,
+    radius: 150 // How far the mouse "reaches" to connect
+};
+
+window.addEventListener('mousemove', (event) => {
+    mouse.x = event.x;
+    mouse.y = event.y;
+});
+
+// Clear mouse position when it leaves the window
+window.addEventListener('mouseout', () => {
+    mouse.x = null;
+    mouse.y = null;
+});
 
 function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    init(); // Re-initialize particles when the window size changes
+    init();
 }
 window.addEventListener('resize', resize);
 
@@ -63,8 +81,8 @@ class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
+        this.vx = (Math.random() - 0.5) * 1.5; // Slightly faster for better feel
+        this.vy = (Math.random() - 0.5) * 1.5;
         this.radius = 2;
     }
 
@@ -78,16 +96,14 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
         ctx.fill();
     }
 }
 
 function init() {
-    // Determine density every time init is called (like on resize)
-    particleCount = window.innerWidth < 768 ? 30 : 80;
-    connectionDistance = window.innerWidth < 768 ? 100 : 150;
-
+    particleCount = window.innerWidth < 768 ? 50 : 120; // Increased count for better interactivity
+    connectionDistance = 120;
     particles = [];
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
@@ -96,9 +112,28 @@ function init() {
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
     for (let i = 0; i < particles.length; i++) {
         particles[i].update();
         particles[i].draw();
+
+        // 2. Interactive Connection: Check distance between mouse and particle
+        if (mouse.x !== null && mouse.y !== null) {
+            let dxMouse = particles[i].x - mouse.x;
+            let dyMouse = particles[i].y - mouse.y;
+            let distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+
+            if (distMouse < mouse.radius) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(0, 0, 0, ${1 - distMouse / mouse.radius})`;
+                ctx.lineWidth = 1; // Thicker lines for mouse connections
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+            }
+        }
+
+        // Standard particle-to-particle connections
         for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
             const dy = particles[i].y - particles[j].y;
@@ -116,9 +151,9 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-// Call resize once to set initial dimensions and run init()
 resize(); 
 animate();
+
 
 
 
