@@ -303,9 +303,38 @@ section {
     margin: 0 auto;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .about-image {
     flex: 1;
     background-color: #ffffff;
+    overflow: hidden;
+    border: 1px solid #000;
+}
+
+.animated-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
+}
+
+.about-image:hover .animated-photo {
+    transform: scale(1.5); /* zoom optimization */
+}
+
+.about-image:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.95); /* Soft depth on hover */
+    transition: box-shadow 0.4s ease;
 }
 
 .about-image img {
@@ -316,6 +345,7 @@ section {
 
 .about-content {
     flex: 1.5;
+    animation: fadeInUp 1.5s ease-out forwards;
 }
 
 .label {
