@@ -2,7 +2,7 @@
 
 
 // Changing text in greetings
-const greetings = ["Kamusta,", "Hello,", "Hola,", "Bonjour,", "こんにちは,", "Annyeong,"];
+const greetings = ["Kamusta,", "Hello,", "Hola,", "Bonjour,", "こんにちは,", "안녕하세요,"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -20,17 +20,17 @@ function type() {
     }
 
     // Speed settings
-    let typeSpeed = isDeleting ? 100 : 200; // Mas mabilis pag nagbubura
+    let typeSpeed = isDeleting ? 100 : 200;
 
     // Kung tapos na i-type ang buong salita
     if (!isDeleting && charIndex === currentWord.length) {
-        typeSpeed = 2000; // Mag-pause muna ng 2 seconds bago magbura
+        typeSpeed = 3000;
         isDeleting = true;
     } 
     // Kung tapos na magbura
     else if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        wordIndex = (wordIndex + 1) % greetings.length; // Lipat sa susunod na salita
+        wordIndex = (wordIndex + 1) % greetings.length;
         typeSpeed = 500;
     }
 

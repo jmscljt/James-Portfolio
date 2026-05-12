@@ -1,3 +1,18 @@
+/* Highlighting text effect */
+::selection {
+  /* Removes the default rectangle */
+  background-color: transparent;
+  
+  /* Glow effect */
+  color: #ffffff; /* Keep text white or primary theme color */
+  text-shadow: 
+    0 0 10px rgba(0, 210, 255, 0.8), /* Soft primary glow */
+    0 0 20px rgba(58, 123, 213, 0.5); /* Wider secondary glow */
+    
+  /* 3. Add a thin outline for a sharp, modern look */
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.5);
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -272,4 +287,75 @@ section {
 
 .hire-me:hover span {
     transform: translateX(8px);
+}
+
+#about-me {
+    color: #000000;
+    padding: 80px 10%;
+    font-family: 'Inter', sans-serif;
+}
+
+.about-flex-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-image {
+    flex: 1;
+    background-color: #ffffff;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #000;
+}
+
+.about-content {
+    flex: 1.5;
+}
+
+.label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+#about-me h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.02rem;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    font-weight: 300;
+    color: #333;
+}
+
+.minimal-line {
+    margin-top: 30px;
+    width: 60px;
+    height: 2px;
+    background-color: #000;
+}
+
+@media (max-width: 768px) {
+    .about-flex-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .minimal-line {
+        margin: 30px auto 0;
+    }
 }
