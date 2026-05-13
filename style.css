@@ -290,7 +290,7 @@ section {
 .hire-me:hover span {
     transform: translateX(8px);
 }
-
+/* About me */
 #about-me {
     color: #000000;
     padding: 80px 10%;
@@ -396,8 +396,11 @@ section {
     }
 
     .about-image img {
-    width: 100%;
-    height: auto;
     border: 1px solid #000;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 }
