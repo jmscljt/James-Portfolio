@@ -404,3 +404,171 @@ section {
     margin: 0 auto;
 }
 }
+
+/* --- Modern Brutalist CSS Styles for #projects --- */
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-bg-dark: #0a0a0a;
+  --color-gray-border: #222222;
+  --color-text-muted: #888888;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+/* Section Wrapper */
+#projects.portfolio-projects {
+  background-color: var(--color-bg-dark);
+  color: var(--color-white);
+  padding: 10rem 4rem;
+  font-family: var(--font-display);
+  overflow: hidden;
+}
+
+/* Header Area */
+#projects .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid var(--color-gray-border);
+  padding-bottom: 2.5rem;
+  margin-bottom: 6rem;
+  margin-right: 10px;
+}
+
+#projects .section-title {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  margin: 0;
+}
+
+#projects .project-count {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* Layout Grid */
+#projects .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 5rem;
+  row-gap: 8rem;
+}
+
+/* Card Structure */
+#projects .project-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* Stagger columns for high-end look */
+#projects .project-card:nth-child(even) {
+  transform: translateY(4rem);
+}
+
+/* Media Wrapper */
+#projects .image-container {
+  position: relative;
+  background-color: #111111;
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+  border: 1px solid var(--color-gray-border);
+}
+
+/* High-Contrast Grayscale Media Asset */
+#projects .project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+  mix-blend-mode: normal;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Text Meta Block */
+#projects .project-info {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#projects .project-category {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+#projects .project-name {
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Subtle typography underline animation */
+#projects .project-name::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-white);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Interactive Hover Effects --- */
+#projects .project-card:hover .project-img {
+  transform: scale(1.05);
+  filter: grayscale(20%) contrast(100%) brightness(100%);
+  mix-blend-mode: normal;
+}
+
+#projects .project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+#projects .project-card:hover .view-link {
+  transform: scale(1) translateY(0);
+}
+
+#projects .project-card:hover .project-name::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 992px) {
+  #projects.portfolio-projects {
+    padding: 6rem 2rem;
+  }
+  
+  #projects .projects-grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 5rem;
+  }
+
+  #projects .project-card:nth-child(even) {
+    transform: translateY(0);
+  }
+  
+  #projects .section-header {
+    margin-bottom: 4rem;
+  }
+}

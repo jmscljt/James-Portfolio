@@ -160,3 +160,16 @@ animate();
 // ----------------------------------------------------------------------------------------------------------------------
 
 
+
+
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+        // Prevent click trigger if clicking directly on the button link
+        if (!e.target.classList.contains('view-project-btn')) {
+            const link = card.querySelector('.view-project-btn').getAttribute('href');
+            window.location.href = link;
+        }
+    });
+    // Visual cue that entire card is clickable
+    card.style.cursor = 'pointer';
+});
