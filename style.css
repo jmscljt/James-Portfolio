@@ -562,6 +562,7 @@ section {
   }
 }
 
+/* Contact Section */
 :root {
   --bg-color: #0f172a00;
   --card-bg: #1e293b00;
@@ -570,7 +571,6 @@ section {
   --accent: #272424a1;
   --accent-hover: #b4a2a2f0;
 }
-
 
 .contact-section {
   padding: 80px 24px;
@@ -598,13 +598,13 @@ section {
   color: var(--text-muted);
   font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .info-details {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 10px;
 }
 
 .info-item {
@@ -614,8 +614,13 @@ section {
 }
 
 .info-icon {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
+
+.info-item a {
+    font-size: 1rem;
+}
+
 
 .contact-form {
   background-color: var(--card-bg);
