@@ -603,7 +603,7 @@ section {
 
 .info-details {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
 }
 
@@ -613,13 +613,26 @@ section {
   gap: 16px;
 }
 
-.info-icon {
-  font-size: 1rem;
-}
-
 .info-item a {
     font-size: 1rem;
+    color: #0f172a;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
 }
+
+.info-item a:hover {
+    background-color: #000000;
+    border-color: #e2e8f0;
+    color: #ffffff;
+}
+
+
+
+
 
 
 .contact-form {
