@@ -418,12 +418,13 @@ section {
 
 /* Section Wrapper */
 #projects.portfolio-projects {
-  background-color: var(--color-bg-dark);
-  color: var(--color-white);
+  background-color: transparent; /* Changed from var(--color-bg-dark) */
+  color: var(--white);
   padding: 10rem 4rem;
   font-family: var(--font-display);
   overflow: hidden;
 }
+
 
 /* Header Area */
 #projects .section-header {
