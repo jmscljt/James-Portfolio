@@ -393,7 +393,9 @@ section {
 
     #about-me {
         padding: 60px 5%;
-        padding-top: 250px;
+        padding-top: 90px;
+        height: auto; /* Allow content to expand */
+        min-height: 100vh;
     }
 
     .about-image img {
@@ -544,24 +546,30 @@ section {
   transform-origin: left;
 }
 
-@media (max-width: 992px) {
-  #projects.portfolio-projects {
-    padding: 6rem 2rem;
-  }
-  
-  #projects .projects-grid {
-    grid-template-columns: 1fr;
-    column-gap: 0;
-    row-gap: 5rem;
-  }
+@media (max-width: 768px) {
+    #projects {
+        padding-top: 90px;
+        height: auto; /* Allow content to expand */
+        min-height: 100vh;
+    }
 
-  #projects .project-card:nth-child(even) {
-    transform: translateY(0);
-  }
-  
-  #projects .section-header {
-    margin-bottom: 4rem;
-  }
+    #projects.portfolio-projects {
+        padding: 6rem 2rem;
+    }
+    
+    #projects .projects-grid {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 5rem;
+    }
+
+    #projects .project-card:nth-child(even) {
+        transform: translateY(0);
+    }
+    
+    #projects .section-header {
+        margin-bottom: 4rem;
+    }
 }
 
 /* Contact Section */
@@ -689,46 +697,45 @@ section {
 }
 
 @media (max-width: 768px) {
-  .contact-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
-  .contact-form {
-    padding: 24px;
-  }@media (max-width: 768px) {
-  .contact-section {
-    padding: 40px 16px; /* Reduced padding prevents overflow */
-  }
+    #contact {
+        padding-top: 90px;
+        height: auto; /* Allow content to expand */
+        min-height: 100vh;
+    }
 
-  .contact-container {
-    grid-template-columns: 1fr; /* Stacks columns vertically */
-    gap: 32px; /* Tighter gap for compact layouts */
-  }
-  
-  .contact-title {
-    font-size: 2rem; /* Scales down heading size */
-    text-align: center;
-  }
+    .contact-section {
+        padding: 40px 16px; /* Reduced padding prevents overflow */
+    }
 
-  .contact-subtitle {
-    text-align: center;
-    margin-bottom: 24px;
-  }
+    .contact-container {
+        grid-template-columns: 1fr; /* Stacks columns vertically */
+        gap: 32px; /* Tighter gap for compact layouts */
+    }
+    
+    .contact-title {
+        font-size: 2rem; /* Scales down heading size */
+        text-align: center;
+    }
 
-  .info-details {
-    flex-direction: column; /* Prevents horizontal clipping of links */
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .contact-form {
-    padding: 24px; /* Increases usable input space */
-  }
+    .contact-subtitle {
+        text-align: center;
+        margin-bottom: 24px;
+    }
 
-  .description {
-    text-align: justify;
-  }
+    .info-details {
+        flex-direction: row; /* Prevents horizontal clipping of links */
+        align-items: center;
+        gap: 16px;
+        margin-left: 90px;
+    }
+    
+    .contact-form {
+        padding: 24px; /* Increases usable input space */
+    }
+
+    .description {
+        text-align: justify;
+    }
 }
-}
+
 
