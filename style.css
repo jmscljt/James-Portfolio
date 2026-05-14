@@ -326,6 +326,7 @@ section {
 .about-image img {
     width: 100%;
     height: auto;
+    pointer-events: none;
 }
 
 .animated-photo {
@@ -481,6 +482,7 @@ section {
   object-fit: cover;
   filter: none;
   mix-blend-mode: normal;
+  pointer-events: none;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -686,7 +688,6 @@ section {
   background-color: var(--accent-hover);
 }
 
-/* Responsive design for tablets and mobile */
 @media (max-width: 768px) {
   .contact-container {
     grid-template-columns: 1fr;
@@ -695,5 +696,39 @@ section {
   
   .contact-form {
     padding: 24px;
+  }@media (max-width: 768px) {
+  .contact-section {
+    padding: 40px 16px; /* Reduced padding prevents overflow */
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr; /* Stacks columns vertically */
+    gap: 32px; /* Tighter gap for compact layouts */
+  }
+  
+  .contact-title {
+    font-size: 2rem; /* Scales down heading size */
+    text-align: center;
+  }
+
+  .contact-subtitle {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .info-details {
+    flex-direction: column; /* Prevents horizontal clipping of links */
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .contact-form {
+    padding: 24px; /* Increases usable input space */
+  }
+
+  .description {
+    text-align: justify;
   }
 }
+}
+
