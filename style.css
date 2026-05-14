@@ -698,7 +698,7 @@ section {
 
 @media (max-width: 768px) {
     #contact {
-        padding-top: 90px;
+        padding-top: 70px;
         height: auto; /* Allow content to expand */
         min-height: 100vh;
     }
